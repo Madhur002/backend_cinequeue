@@ -1,7 +1,9 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const movieSchema = new mongoose.Schema({
-    adult: { type: Boolean, required: true },
+const userMoviesSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    movieId: { type: String, required: true },
+    adult: { type: Boolean},
     backdrop_path: { type: String },
     budget: { type: Number },
     genres: { type: String },
@@ -26,8 +28,8 @@ const movieSchema = new mongoose.Schema({
     watched: { type: Boolean, default: false },
     rating: { type: Number, min: 1, max: 5 },
     review: { type: String },
-  });
+});
 
-const Movie = mongoose.model('Movie', movieSchema);
+const UserMovies = mongoose.model('UserMovies', userMoviesSchema);
 
-module.exports = Movie;
+export default UserMovies;

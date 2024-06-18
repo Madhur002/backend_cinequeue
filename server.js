@@ -3,9 +3,9 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import Movie from "./models/Movie.js";
-import User from "./models/User.js";
-import UserMovies from "./models/UserMovies.js";
+import Movie from "./models/Movie.mjs";
+import User from "./models/User.mjs";
+import UserMovies from "./models/UserMovies.mjs";
 const app = express();
 const port = 3000;
 
