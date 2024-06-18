@@ -96,8 +96,9 @@ app.get("/movies", async (req, res) => {
 });
 
 app.get("/usermovies", async (req, res) => {
+  const { userId } = req.body;
   try {
-    const movies = await UserMovies.find();
+    const movies = await UserMovies.find({ userId });
     res.json(movies);
   } catch (err) {
     res.status(500).json({ message: err.message });
