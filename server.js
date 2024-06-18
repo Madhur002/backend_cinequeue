@@ -96,7 +96,7 @@ app.get("/movies", async (req, res) => {
 });
 
 app.get("/usermovies", async (req, res) => {
-  const { userId } = req.body;
+  const { userId } = req.query;
   try {
     const objectId = new mongoose.Types.ObjectId(userId);
     const movies = await UserMovies.find({ userId: objectId });
