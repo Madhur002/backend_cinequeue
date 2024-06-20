@@ -22,12 +22,12 @@ mongoose
     console.error("Failed to connect to MongoDB", err);
   });
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+const corsOptions = {
+  credentials: true,
+  origin: ['https://cinequeue.netlify.app/', 'http://localhost:5173/'] // Whitelist the domains you want to allow
+};
 
-app.use(cors());
+app.use(cors(corsOptions)); // Use the cors middleware with your options
 app.use(bodyParser.json());
 
 // User Signup
