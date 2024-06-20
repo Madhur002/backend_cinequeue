@@ -22,7 +22,22 @@ mongoose
     console.error("Failed to connect to MongoDB", err);
   });
 
-app.use(cors());
+  // Enable CORS for a specific origin
+  const allowedOrigins = ['https://cinequeue.netlify.app', 'http://localhost:5173'];
+
+  // Enable CORS
+  const corsOptions = {
+    origin: (origin, callback) => {
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    optionsSuccessStatus: 200 // For legacy browser support
+  };
+  
+  app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // User Signup
